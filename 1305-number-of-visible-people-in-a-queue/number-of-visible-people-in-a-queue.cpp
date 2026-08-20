@@ -9,7 +9,7 @@ public:
                 st.pop();
                 ans[i]++;
             }
-            if(st.size() != 0) ans[i]++;
+            if(!st.empty()) ans[i]++;
             st.push(heights[i]);
         }
         return ans;
