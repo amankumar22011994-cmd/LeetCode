@@ -16,7 +16,6 @@ public:
         return arr[key];
     }
 };
-
 /**
  * Your MyHashSet object will be instantiated and called as such:
  * MyHashSet* obj = new MyHashSet();
