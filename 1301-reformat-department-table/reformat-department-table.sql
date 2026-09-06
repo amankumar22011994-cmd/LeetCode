@@ -14,3 +14,4 @@ MAX(CASE WHEN month = 'Jan' THEN revenue END) AS Jan_Revenue,
     MAX(CASE WHEN month = 'Dec' THEN revenue END) AS Dec_Revenue
 from Department
 group by id
+order by id
