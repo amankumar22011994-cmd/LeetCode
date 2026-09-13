@@ -1,17 +1,18 @@
 -- Write your PostgreSQL query statement below
-SELECT 
-    d.name AS Department,
-    e.name AS Employee,
-    e.salary AS Salary
-FROM (
+with ranked as (
     SELECT 
         *,
         DENSE_RANK() OVER (
             PARTITION BY departmentId
             ORDER BY salary DESC
-        ) AS rank
+        ) AS rnk
     FROM Employee
-) e
+)
+SELECT 
+    d.name AS Department,
+    r.name AS Employee,
+    r.salary AS Salary
+    from ranked r
 JOIN Department d
-    ON e.departmentId = d.id
-WHERE e.rank <= 3;
+    ON r.departmentId = d.id
+WHERE r.rnk <= 3;
