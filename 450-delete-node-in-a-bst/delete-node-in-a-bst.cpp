@@ -15,23 +15,22 @@ public:
         if(root==NULL)return NULL;
         if(key < root->val){
             root->left=deleteNode(root->left,key);
-        }else if(key > root->val){
-            root->right=deleteNode(root->right,key);
         }
-        else{
-            if(root->left==NULL){
+        else if(key > root->val){
+            root->right=deleteNode(root->right,key);
+        }else{
+            if(root->left ==NULL){
                 return root->right;
             }
-            if(root->right==NULL){
+            if(root->right ==NULL){
                 return root->left;
             }
             TreeNode* cutter=root->right;
-            while(cutter->left !=NULL){
+            while( cutter->left !=NULL){
                 cutter=cutter->left;
-               
             }
             root->val=cutter->val;
-                root->right=deleteNode(root->right,cutter->val);
+            root->right=deleteNode(root->right,cutter->val);
         }
         return root;
     }
